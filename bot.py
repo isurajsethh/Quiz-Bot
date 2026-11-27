@@ -492,9 +492,7 @@ async def handle_poll_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
         rec.wrong += 1
         rec.score -= session.neg_marking
         rec.mistakes.append((item.q_num, item.question, chosen_text, right_text))
-
-
-async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+                async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not update.effective_user or not is_owner(update.effective_user.id):
         return
 
@@ -577,7 +575,6 @@ async def cmd_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await msg.reply_text("❌ इस फ़ाइल में कोई मान्य प्रश्न नहीं मिला।")
         return
 
-    # Optional range argument on /quiz <start>-<end>
     start_idx = 0
     end_idx = len(questions)
     if context.args:
@@ -585,7 +582,7 @@ async def cmd_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         if "-" in arg_str:
             parts = arg_str.split("-", 1)
             if parts[0].isdigit() and parts[1].isdigit():
-                                s_val = max(1, int(parts[0]))
+                s_val = max(1, int(parts[0]))
                 e_val = min(len(questions), int(parts[1]))
                 if s_val <= e_val:
                     start_idx = s_val - 1
