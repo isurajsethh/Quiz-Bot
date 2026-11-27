@@ -492,7 +492,7 @@ async def handle_poll_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
         rec.wrong += 1
         rec.score -= session.neg_marking
         rec.mistakes.append((item.q_num, item.question, chosen_text, right_text))
-                async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not update.effective_user or not is_owner(update.effective_user.id):
         return
 
