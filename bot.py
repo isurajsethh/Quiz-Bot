@@ -865,6 +865,11 @@ async def post_init(application: Application) -> None:
 
 
 def main() -> None:
+    try:
+        asyncio.get_event_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
+
     if not BOT_TOKEN:
         raise RuntimeError("BOT_TOKEN environment variable is required.")
 
